@@ -1,30 +1,33 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
   <router-view/>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+  import {provide} from 'vue'
+  import  * as echarts from 'echarts'  //引入echarts所有内容
+  import axios from 'axios'
 
-nav {
-  padding: 30px;
+//设置基准路径
+axios.defaults.baseURL = "http://39.108.15.20:8088/"
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+ export default {
+  setup(){
+    provide("echarts", echarts)
+    provide("axios", axios)
   }
+ }
+</script>
+
+<style lang="less">
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body{
+  background: url("~@/assets/bg.jpg") top center no-repeat;
+  background-size: 100% 100% 
+}
+
 </style>
